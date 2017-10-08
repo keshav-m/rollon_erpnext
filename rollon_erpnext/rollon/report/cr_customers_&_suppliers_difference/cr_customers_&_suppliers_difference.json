@@ -1,0 +1,30 @@
+{
+ "add_total_row": 1, 
+ "apply_user_permissions": 1, 
+ "creation": "2017-10-08 09:32:11.847051", 
+ "disabled": 0, 
+ "docstatus": 0, 
+ "doctype": "Report", 
+ "idx": 0, 
+ "is_standard": "Yes", 
+ "modified": "2017-10-08 09:32:21.057140", 
+ "modified_by": "Administrator", 
+ "module": "Rollon", 
+ "name": "CR Customers & Suppliers difference", 
+ "owner": "Administrator", 
+ "query": "SELECT\n`tabJournal Entry`.posting_date as \"Posting Date:Date/Date:90\",\n`tabJournal Entry`.name as \"ID:Link/Journal Entry:120\",\n`tabJournal Entry Account`.account as \"Account:Data:130\",\n`tabJournal Entry Account`.party as \"Party:Data:170\",\n`tabJournal Entry Account`.debit as \"Debit:Float:100\",\n`tabJournal Entry Account`.credit as \"Credit:Float:100\",\n(`tabJournal Entry Account`.debit-`tabJournal Entry Account`.credit) as \"Difference amount:Float:100\",\n`tabJournal Entry`.total_debit as \"Total Debit:Float:100\",\n`tabJournal Entry`.total_credit as \"Total Credit:Float:100\"\n\nFROM\n`tabJournal Entry`,\n`tabJournal Entry Account`\n\nWHERE\n`tabJournal Entry`.name=`tabJournal Entry Account`.parent\n&& `tabJournal Entry`.posting_date>=%(from_date)s && `tabJournal Entry`.posting_date<=%(to_date)s\n&& INSTR(`tabJournal Entry`.pay_to_recd_from, %(party)s)>0\n&& `tabJournal Entry`.docstatus=1\n", 
+ "ref_doctype": "Journal Entry", 
+ "report_name": "CR Customers & Suppliers difference", 
+ "report_type": "Query Report", 
+ "roles": [
+  {
+   "role": "Accounts User"
+  }, 
+  {
+   "role": "Accounts Manager"
+  }, 
+  {
+   "role": "Auditor"
+  }
+ ]
+}

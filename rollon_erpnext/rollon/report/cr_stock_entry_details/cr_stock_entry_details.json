@@ -1,0 +1,33 @@
+{
+ "add_total_row": 1, 
+ "apply_user_permissions": 1, 
+ "creation": "2017-10-08 09:30:44.114206", 
+ "disabled": 0, 
+ "docstatus": 0, 
+ "doctype": "Report", 
+ "idx": 0, 
+ "is_standard": "Yes", 
+ "modified": "2017-10-08 09:30:50.805435", 
+ "modified_by": "Administrator", 
+ "module": "Rollon", 
+ "name": "CR Stock Entry Details", 
+ "owner": "Administrator", 
+ "query": "SELECT\n`tabStock Entry`.posting_date as \"Posting Date:Date/Date:100\",\n`tabStock Entry`.name as \"ID:Link/Stock Entry:130\",\n`tabStock Entry Detail`.item_name as \"Item Name:Data:180\",\n`tabStock Entry Detail`.qty as \"Qty:Float:100\",\n`tabStock Entry Detail`.basic_rate as \"Basic Rate:Float/Currency:100\",\n`tabStock Entry Detail`.basic_amount as \"Basic Amount:Float/Currency:120\",\n`tabStock Entry`.owner as \"Created By:Data:140\"\n\nFROM\n`tabStock Entry`,\n`tabStock Entry Detail`\n\nWHERE\n`tabStock Entry`.posting_date>=%(from_date)s && `tabStock Entry`.posting_date<=%(to_date)s\n&& `tabStock Entry Detail`.parent=`tabStock Entry`.name\n&& `tabStock Entry`.purpose=%(purpose)s\n&& `tabStock Entry`.docstatus=1", 
+ "ref_doctype": "Stock Entry", 
+ "report_name": "CR Stock Entry Details", 
+ "report_type": "Query Report", 
+ "roles": [
+  {
+   "role": "Stock User"
+  }, 
+  {
+   "role": "Manufacturing User"
+  }, 
+  {
+   "role": "Manufacturing Manager"
+  }, 
+  {
+   "role": "Stock Manager"
+  }
+ ]
+}
