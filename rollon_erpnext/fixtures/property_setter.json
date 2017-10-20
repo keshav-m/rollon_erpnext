@@ -1404,7 +1404,7 @@
   "doctype": "Property Setter", 
   "doctype_or_field": "DocType", 
   "field_name": null, 
-  "modified": "2017-10-20 17:28:56.128408", 
+  "modified": "2017-10-20 18:08:45.295837", 
   "name": "Production Order-read_only_onload", 
   "property": "read_only_onload", 
   "property_type": "Check", 
